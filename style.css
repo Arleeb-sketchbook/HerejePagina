@@ -287,7 +287,7 @@ input[type="number"] {
     flex-direction: row;
     transition: 0.2s;
 }
-      .codex-tabs button:hover{
+ button:hover{
 
   box-shadow: 0 0 8px gray;
       }
