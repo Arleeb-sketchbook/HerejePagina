@@ -18,6 +18,18 @@ const codexUsers = {
   zeraiya:   { color: '#3f8cff', glow: 'rgba(63,140,255,0.45)' ,name:'Zeraiya'},
   chance:    { color: '#DC143C', glow: 'rgba(220, 20, 60,0.45)',name:'Chance'}
 };
+document.getElementById("DarkForce").addEventListener("change", function() {
+const codexUsers = {
+  unselected:{ color: '#888888', glow: 'rgba(120,120,120,0.25)', name:'???'},
+  akatsuki:  { color: '#35e0e4', glow: 'rgba(53,224,228,0.45)',  name:'Akatsuki'},
+  elios:     { color: '#cfff6c', glow: 'rgba(207,255,108,0.45)', name:'Elios'},
+  jojo:      { color: '#4d73fe', glow: 'rgba(77,115,254,0.45)',  name:'JoJo'},
+  clementine:{ color: '#ff916f', glow: 'rgba(255,145,111,0.45)', name:'Clementine'},
+  quiron:    { color: '#89ffb0', glow: 'rgba(137,255,176,0.45)', name:'Quiron'},
+  zeraiya:   { color: '#ffb13f', glow: 'rgba(255,177,63,0.45)',  name:'Zeraiya'},
+  chance:    { color: '#13dcb4', glow: 'rgba(19,220,180,0.45)',  name:'Chance'}
+};
+});
 const select = document.getElementById('userSelect');
 
 function saveState() {
@@ -423,6 +435,4 @@ document.querySelectorAll(".toggle-btn").forEach(btn => {
 
   });
 });
-document.getElementById("DarkForce").addEventListener("change", function() {
-    document.body.style.filter = this.checked ? "hue-rotate(180deg)" : "none";
-});
+
