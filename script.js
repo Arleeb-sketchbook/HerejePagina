@@ -19,7 +19,9 @@ const codexUsers = {
   chance:    { color: '#DC143C', glow: 'rgba(220, 20, 60,0.45)',name:'Chance'}
 };
 const select = document.getElementById('userSelect');
-
+document.getElementById("DarkForce").addEventListener("change", function() {
+    document.body.style.filter = this.checked ? "hue-rotate(180deg)" : "none";
+});
 function saveState() {
   const state = {
     user: select.value,
