@@ -8,7 +8,7 @@ const totalSpan = document.getElementById('total');
 const maxSpan = document.getElementById('max');
 const progressBar = document.getElementById('progressBar');
 const maxInput = document.getElementById('maxTributos');
-let codexUsers = {
+const codexUsers = {
   unselected:{ color: '#888'   , glow: 'rgba(120,120,120,0.25)',name:'???'},
   akatsuki:  { color: '#e53935', glow: 'rgba(229,57,53,0.45)'  ,name:'Akatsuki'},
   elios:     { color: '#9c6cff', glow: 'rgba(156,108,255,0.45)',name:'Elios'},
@@ -18,33 +18,6 @@ let codexUsers = {
   zeraiya:   { color: '#3f8cff', glow: 'rgba(63,140,255,0.45)' ,name:'Zeraiya'},
   chance:    { color: '#DC143C', glow: 'rgba(220, 20, 60,0.45)',name:'Chance'}
 };
-
-document.getElementById("DarkForce").addEventListener("change", function() {
-
-  if (this.checked) {
-    codexUsers = {
-      unselected:{ color: '#888888', glow: 'rgba(120,120,120,0.25)', name:'???'},
-      akatsuki:  { color: '#35e0e4', glow: 'rgba(53,224,228,0.45)',  name:'Akatsuki'},
-      elios:     { color: '#cfff6c', glow: 'rgba(207,255,108,0.45)', name:'Elios'},
-      jojo:      { color: '#4d73fe', glow: 'rgba(77,115,254,0.45)',  name:'JoJo'},
-      clementine:{ color: '#ff916f', glow: 'rgba(255,145,111,0.45)', name:'Clementine'},
-      quiron:    { color: '#89ffb0', glow: 'rgba(137,255,176,0.45)', name:'Quiron'},
-      zeraiya:   { color: '#ffb13f', glow: 'rgba(255,177,63,0.45)',  name:'Zeraiya'},
-      chance:    { color: '#13dcb4', glow: 'rgba(19,220,180,0.45)',  name:'Chance'}
-    };
-  } else {
-    codexUsers = {
-      unselected:{ color: '#888'   , glow: 'rgba(120,120,120,0.25)',name:'???'},
-      akatsuki:  { color: '#e53935', glow: 'rgba(229,57,53,0.45)'  ,name:'Akatsuki'},
-      elios:     { color: '#9c6cff', glow: 'rgba(156,108,255,0.45)',name:'Elios'},
-      jojo:      { color: '#ffd84d', glow: 'rgba(255,216,77,0.45)' ,name:'JoJo'},
-      clementine:{ color: '#6fdcff', glow: 'rgba(111,220,255,0.45)',name:'Clementine'},
-      quiron:    { color: '#ff8ad8', glow: 'rgba(255,138,216,0.45)',name:'Quiron'},
-      zeraiya:   { color: '#3f8cff', glow: 'rgba(63,140,255,0.45)' ,name:'Zeraiya'},
-      chance:    { color: '#DC143C', glow: 'rgba(220, 20, 60,0.45)',name:'Chance'}
-    };
-  }
-
 const select = document.getElementById('userSelect');
 
 function saveState() {
