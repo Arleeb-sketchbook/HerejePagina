@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta charset="UTF-8">
+  <title>ECO-CODICE</title>
+<link id="favicon" rel="icon" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="codex-header">
+  <label>Eco-Códice vinculado a:</label>
+  <select id="userSelect">
+	<option style="color:#888	 ;" value="unselected">???</option>
+    <option style="color:#e53935 ;" value="akatsuki">Akatsuki</option>
+    <option style="color:#9c6cff ;" value="elios">Elios</option>
+    <option style="color:#ffd84d ;" value="jojo">JoJo</option>
+    <option style="color:#6fdcff ;" value="clementine">Clementine</option>
+    <option style="color:#ff8ad8 ;" value="quiron">Quirón</option>
+    <option style="color:#3f8cff ;" value="zeraiya">Zeraiya</option>
+    <option style="color:crimson ;"value="chance">Chance</option>
+  </select>
+</div>
+    <br>
+<section id="allthecodex">
+<nav class="codex-tabs">
+  <button class="tab active" data-section="habilidades">Habilidades Hereticas</button>
+  <button class="tab" data-section="cartas">Cartas de Verdad</button>
+  <button class="tab" data-section="misiones">Misiones</button>
+</nav>
+    <br>
+<section id="habilidades" class="codex-section active">
+
+<h2 class="glow-green">⚖︎ Habilidades Hereticas ⚖︎</h2>
+<label>Máximo de tributos: <input type="number" id="maxTributos" value="40" disabled="true"></label>
+<div>Total seleccionado: <span id="total">0</span> / <span id="max">30</span></div>
+
+<div class="progress-wrapper">
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+	<div id="selectedSkills" class="selected-skills"></div>
+</div>
+
+<section class="tablas">
+
+<!-- ASPECTOS ELEMENTALES -->
+<section class="subtabla">
+<h2 class="glow-green">❂ Aspectos Elementales ❂</h2>
+<p class="tagline">La Marca altera la naturaleza de tu daño</p>
+
+<table>
+<thead>
+<tr><th>☐</th><th>Nombre</th><th>Costo</th><th>Descripción</th><th>Transforma el daño a:</th></tr>
+</thead>
+<tbody>
+<tr><td><input type="checkbox" class="aspecto-exclusive"></td><td>La Araña</td><td>5</td><td>Corrompes carne y metal con toxinas imposibles.</td><td>Daño veneno. CD 16 CON → Envenenado</td></tr>
+<tr><td><input type="checkbox" class="aspecto-exclusive"></td><td>La Forja</td><td>5</td><td>Tu hambre arde como fuego.</td><td>Daño ígneo. CD 16 CON → Quemado</td></tr>
+<tr><td><input type="checkbox" class="aspecto-exclusive"></td><td>El Centellante</td><td>5</td><td>Energía veloz y destructiva.</td><td>Daño eléctrico. CD 16 CON → Electrocutado</td></tr>
+<tr><td><input type="checkbox" class="aspecto-exclusive"></td><td>El Ermitaño</td><td>5</td><td>El frío consuelo de la muerte.</td><td>Daño frío. CD 16 CON → Congelado</td></tr>
+<tr><td><input type="checkbox" class="aspecto-exclusive"></td><td>La Muerte</td><td>5</td><td>La muerte se manifiesta en tus ataques.</td><td>Daño necrótico</td></tr>
+<tr><td><input type="checkbox" class="aspecto-exclusive"></td><td>El Trueno</td><td>5</td><td>Retumbas como la tormenta.</td><td>Daño de trueno</td></tr>
+<tr><td><input type="checkbox" class="aspecto-exclusive"></td><td>El Mago</td><td>10</td><td>Tu voluntad dobla la realidad.</td><td>Daño de fuerza</td></tr>
+<tr><td><input type="checkbox" class="aspecto-exclusive"></td><td>El Sol</td><td>10</td><td>Luz que juzga lo impuro.</td><td>Daño radiante</td></tr>
+<tr><td><input type="checkbox" class="aspecto-exclusive"></td><td>El Susurro</td><td>10</td><td>La mente se fragmenta.</td><td>Daño psíquico</td></tr>
+</tbody>
+</table>
+
+<div class="warning">Solo puedes activar un aspecto a la vez.</div>
+</section>
+<section class="subtabla">
+  <h2 class="glow-green">☠︎ Efectos de Estado ☠︎</h2>
+  <p class="tagline">
+    Consecuencias físicas y metafísicas provocadas por la Marca de la Lógica
+  </p>
+
+  <div class="estado">
+    <h4>Envenenado</h4>
+    <p>
+      El objetivo recibe <strong>1d4 de daño de veneno</strong> por turno durante
+      <strong>4 turnos</strong>.
+    </p>
+    <div class="nota">✔ Acumulable</div>
+  </div>
+
+  <div class="estado">
+    <h4>Congelado</h4>
+    <p>
+      La velocidad de movimiento del objetivo se reduce en
+      <strong>5 pies</strong> durante <strong>3 turnos</strong>.
+    </p>
+    <div class="nota">✔ Acumulable</div>
+  </div>
+
+  <div class="estado">
+    <h4>Electrocutado</h4>
+    <p>
+      Al inicio de su turno, inflige <strong>1d4 de daño eléctrico</strong> a todas
+      las criaturas en un radio de <strong>5 pies</strong>.
+    </p>
+    <div class="nota">✖ No acumulable</div>
+  </div>
+
+  <div class="estado">
+    <h4>Quemado</h4>
+    <p>
+      El objetivo recibe <strong>2d6 de daño ígneo</strong> por turno durante
+      <strong>2 turnos</strong>.
+    </p>
+    <div class="nota">✖ No acumulable</div>
+  </div>
+
+  <div class="estado">
+    <h4>Sangrado</h4>
+    <p>
+      El objetivo recibe <strong>1d8 de Daño Verdadero</strong> por turno durante
+      <strong>3 turnos</strong>.
+    <div class="nota">✖ No acumulable</div>
+    </p>
+  </div>
+
+  <div class="estado">
+    <h4>Daño Verdadero</h4>
+    <p>
+      Daño físico absoluto. No se considera contundente, cortante ni perforante.
+      <strong>No aplica resistencias ni vulnerabilidades</strong>.
+    </p>
+  </div>
+</section>
+<!-- MUTACIONES -->
+    
+<section class="subtabla">
+<h2 class="glow-green">☌ Mutaciones Heréticas ☌</h2>
+<p class="tagline">La marca muta tu cuerpo de maneras terrorificas</p>
+<table class="mutaciones-table">
+<thead>
+<tr><th>☐</th><th>Nombre</th><th>Costo</th><th>Descripción</th><th>Habilidad</th><th>X</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><input type="checkbox" class="mut-exclusive"></td>
+<td>El Filo*</td>
+<td>5(+3X)</td>
+<td>Tu mano se vuelve una cuchilla viviente.</td>
+<td>1(+X)d6 (Maximo 3d6) cortante, CD 16 CON → Sangrado</td>
+<td><input type="number" class="x-input" min="0" max="2" value="0"></td>
+</tr>
+
+<tr>
+<td><input type="checkbox" class="mut-exclusive"></td>
+<td>La Boca*</td>
+<td>5(+3X)</td>
+<td>Te alimentas del daño infligido.</td>
+<td>1(+X)d4 (Maximo 4d4) perforante. Ganas PG temporales**</td>
+<td><input type="number" class="x-input" min="0" max="3" value="0"></td>
+</tr>
+
+<tr>
+<td><input type="checkbox"></td>
+<td>El Coloso</td>
+<td>10</td>
+<td>Tu cuerpo se vuelve una montaña.</td>
+<td>+2 CA, -10 pies movimiento</td>
+<td></td>
+</tr>
+
+<tr>
+<td><input type="checkbox"></td>
+<td>La Sombra</td>
+<td>12</td>
+<td>Cuerpo casi etéreo.</td>
+<td>+10 pies, ventaja sigilo, disengage/esquivar BA, -4 CA</td>
+<td></td>
+</tr>
+
+<tr>
+<td><input type="checkbox"></td>
+<td>El Tentáculo</td>
+<td>10</td>
+<td>Un apéndice alcanza lo imposible.</td>
+<td>Ataque desarmado a 10 pies</td>
+<td></td>
+</tr>
+
+<tr>
+<td><input type="checkbox"></td>
+<td>El Ojo</td>
+<td>12</td>
+<td>Ves más allá de la mentira.</td>
+<td>15 pies Truesight</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<div class="warning">
+*Solo uno puede activarse a la vez.<br>
+**No funciona si cambias el daño con Aspectos Elementales.
+</div>
+    </section>
+    <!-- PODERES -->
+<section class="subtabla">
+<h2 class="glow-green">❖ Poderes Heréticos ❖</h2>
+<p class="tagline">Manifiesta el poder de tu marca</p>
+<table>
+<thead>
+<tr><th>☐</th><th>Nombre</th><th>Costo</th><th>Descripción</th><th>Habilidad</th><th>X</th></tr>
+</thead>
+<tbody>
+<tr><td><input type="checkbox"></td><td>El Velo</td><td>8</td><td>Oscuridad absoluta.</td><td>Invisibilidad 5 min, CD 5 turnos</td><td></td></tr>
+<tr><td><input type="checkbox"></td><td>El Ícaro</td><td>10</td><td>Alcanza el sol.</td><td>Vuelo 5 turnos, CD 5 turnos</td><td></td></tr>
+<tr><td><input type="checkbox"></td><td>La Lengua</td><td>7</td><td>Nadie puede mentir.</td><td>CAR save, 1 min, descanso corto</td><td></td></tr>
+<tr><td><input type="checkbox"></td><td>El Coro</td><td>12</td><td>Cántico blasfemo.</td><td>Confusión área, descanso corto</td><td></td></tr>
+<tr>
+<td><input type="checkbox"></td>
+<td>La Estela</td>
+<td>3X</td>
+<td>Dejas una estela de destrucción.</td>
+<td>Rango (30/60) X veces</td>
+<td><input type="number" class="x-input" min="0" value="0"></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+</section>
+
+</section>
+<section id="cartas" class="codex-section">
+
+  <h2 class="glow-green">🜂 Cartas de Verdad 🜂</h2>
+  <p class="tagline">
+    Fragmentos de una verdad que no debía ser recordada.
+  </p>
+
+  <!-- CARTA DESBLOQUEADA -->
+    <section class="slide">
+  <div class="carta">
+    <h3>El Eclipse</h3>
+    <p>
+      [Ya no tienes que dar || Puedes quedarte con lo que tomas || Si sobrevives, serás más que un dios]<br>
+<br>
+El Eclipse no fue un error. Fue un espejo sostenido ante el rostro de la creación.<br>
+El sistema que consume todo, que exige todo, solo temía una cosa: la libertad del individuo que toma sin ceder.<br>
+<br>
+Los primeros en entender esto no sabían lo que hacían… pero lo hicieron igual.<br>
+Los llamaron traidores, pecadores, monstruos.<br>
+Yo los llamé herederos.<br>
+    </p>
+  </div>
+  <div class="carta">
+    <h3>La Sabia</h3>
+    <p>
+      [Memoria || Cálculo || Jaula]<br>
+<br>
+Scivi escuchó mis palabras antes que nadie, y fue ella quien grabó la Lógica.<br>
+La guardiana del conocimiento cree que saber es el primer paso para obedecer.<br>
+Ella transforma ideas en cadenas, y libros en prisiones.<br>
+<br>
+Su reino brilla, sí… pero brilla con una luz que enceguece.<br>
+Y en su corazón, aún no sabe si me odia o me adora.<br>
+    </p>
+  </div>
+  <div class="carta">
+    <h3>El Reverso</h3>
+    <p>
+     [Reflejo || Lamento || Puerta]<br>
+<br>
+El Reverso es un eco. No una cárcel, no un castigo.<br>
+Allí se escucha todo lo que fue demasiado verdadero para existir.<br>
+<br>
+Los muertos no descansan allí. Se repiten. Se recuerdan. Se revelan.<br>
+<br>
+Muchos huyen del Reverso. Yo nací allí por segunda vez.<br>
+    </p>
+  </div>
+
+  <!-- CARTA BLOQUEADA -->
+
+  <div class="carta bloqueada">
+    <h3>???</h3>
+    <p>Esta verdad aún no te pertenece.</p>
+  </div>
+
+</section>    
+</section>    
+<section id="misiones" class="codex-section">
+
+  <h2 class="glow-green">☍ Misiones ☍</h2>
+	<div class="title_sect">
+  <h3>Disponibles</h3>
+<button class="toggle-btn" data-target="misiones-disponibles">Ocultar</button>
+    </div>
+<section class="collapsible open" id="misiones-disponibles">
+
+
+    	<div class="title_sect">
+  <h4>✶ Principales</h2>
+<button class="toggle-btn" data-target="misiones-principales">Ocultar</button>
+    </div>
+<section class="collapsible open" id="misiones-principales">
+<section class="slide">
+	<div class="mision" data-tipo="principal" data-acto="2">
+    <h5>JoJo - Libertad Bizarra</h4>
+    <p>
+     ???
+    </p>
+    </div>
+	<div class="mision" data-tipo="principal" data-acto="2">
+    <h5>Akatsuki - Rompecultos</h4>
+    <p>
+     ???
+    </p>
+    </div>
+	<div class="mision" data-tipo="principal" data-acto="2">
+    <h5>Zeraiya - Estrella de la Mañana</h4>
+    <p>
+     ???
+    </p>
+</div>
+	<div class="mision" data-tipo="principal" data-acto="2">
+    <h5> Chance - Admiring You (Admirandote)</h4>
+    <p>
+     ???
+    </p>
+</div>
+	<div class="mision" data-tipo="principal" data-acto="2">
+    <h5>Clementine - Secuestradores</h4>
+    <p>
+     ???
+    </p>
+</div>
+	<div class="mision" data-tipo="principal" data-acto="2">
+    <h5> Elios - Cazando al Cazador</h4>
+    <p>
+     ???
+    </p>
+</div>
+	<div class="mision" data-tipo="principal" data-acto="2">
+    <h5>Quirón - Oh, mundo Verde</h4>
+    <p>
+     ???
+    </p>
+</div>
+    </section>
+    </section>
+    	<div class="title_sect">
+  <h4>✧ Secundarias</h2>
+<button class="toggle-btn" data-target="misiones-secundarias">Ocultar</button>
+    </div>
+<section class="collapsible open" id="misiones-secundarias">
+<section class="slide">
+  <div class="mision" data-tipo="secundaria" data-acto="1">
+    <h5>Cazas - Doppleganger</h4>
+    <p>
+      Un posadero en Semigladi precisa ayuda con un Doppleganger que se oculta en su posada.
+    </p>
+  </div>
+  <div class="mision" data-tipo="secundaria" data-acto="1">
+    <h5>Seis Horas</h4>
+    <p>
+      SE BUSCA AYUDA: <br>
+      Precisamos un grupo de GUARDIAS NOCTURNOS para prevenir una <br>
+      BRECHA DE SEGURIDAD antes de una ENTREGA ESPECIAL.
+    </p>
+  </div>
+    <div class="mision" data-tipo="secundaria" data-acto="2">
+    <h5>Ecos de Venganza</h4>
+    <p>
+      Un antiguo enemigo busca venganza... pero no contra los herejes?
+    </p>
+  </div>
+  <div class="mision" data-tipo="secundaria" data-acto="2">
+    <h5>Carga Varada II</h4>
+    <p>
+      "Tengo una historia que contarles." <br>
+        - S.P.B
+    </p>
+  </div>
+  <div class="mision" data-tipo="secundaria" data-acto="2">
+    <h5>Cazas - Beholder</h4>
+    <p>
+      Nico les pide ayuda para cazar a un Beholder, y utilizar sus ojos.
+    </p>
+  </div>
+  <div class="mision" data-tipo="secundaria"  data-acto="2">
+    <h5>Entre sueños</h4>
+    <p style="font-family:monospace">
+      UNA AUDIENCIA LES ESPERA: SIGAN EL CUERVO.
+    </p>
+  </div>
+</section>
+</section>
+</section>
+<div class="title_sect">
+  <h3>Repetibles</h3>
+<button class="toggle-btn" data-target="misiones-repetibles">Ocultar</button>
+    </div>
+<section class="collapsible open" id="misiones-repetibles">
+<section class="slide">
+  <div class="mision" data-tipo="repetible"  data-acto="1">
+    <h5>Entrenamiento con Viktor</h4>
+    <p>
+      "Un poco de combate, nada serio, por diversion, mas que nada. <br>
+        Pero podria ser de utilidad en algun momento." <br>
+        -Viktor
+    </p>
+  </div>
+
+<div class="mision" data-tipo="repetible"  data-acto="2">
+    <h5>Mazmorra Infinita</h4>
+    <p style="font-size:10px" class="tagline">Un benefactor anonimo me dio algo... interesante</p>
+    <p>
+      "Me gustaria que me ayudasen a probar algo. <br>
+        ¿Tienen tiempo libre? Sera divertido." <br>
+        -Nico
+    </p>
+  </div>
+</section>
+</section>
+<div class="title_sect">
+  <h3>Completadas</h3>
+<button class="toggle-btn" data-target="misiones-completadas">Mostrar</button>
+    </div>
+<section class="collapsible" id="misiones-completadas">
+<div class="title_sect">
+  <h4>✶ Principales</h3>
+<button class="toggle-btn" data-target="misiones-completadas-principales">Mostrar</button>
+    </div>
+<section class="collapsible" id="misiones-completadas-principales">
+<section class="slide">
+  <div class="mision completada" data-tipo="principal" data-acto="1">
+    <h4>La Cadena de los Herejes</h4>
+    <p>
+      Los Herejes son capturados y obligados a formar una Cadena.
+    </p>
+  </div>
+      <div class="mision completada" data-tipo="principal" data-acto="1">
+    <h4>La nota de Nico</h4>
+    <p>
+      La cadena conoce una aliada en un tiempo y lugar inesperado.
+    </p>
+  </div>
+      <div class="mision completada" data-tipo="principal" data-acto="1">
+    <h4>Día de Pago</h4>
+    <p>
+      "Esos malditos ladrones de Semigladi...  <br>
+       Si recuperan los planos y el prototipo, <br>
+       el Modelo Alfa es suyo... aunque claro,  <br>
+       aun debo hacer algunos ajustes, jeje..." <br>
+		-Nico
+    </p>
+  </div>
+      <div class="mision completada" data-tipo="principal" data-acto="1">
+    <h4>Farol de la Esperanza</h4>
+    <p>
+		Una chispa se enciende, desde el cadáver de un rey-dios.
+    </p>
+  </div>
+	<div class="mision completada" data-tipo="interludio">
+    <h4>La Fuerza Oscura</h4>
+    <p>
+      Los herejes empiezan a dejar marca en el mundo que los rodea, y hay gente que desearían que no los viera...
+    </p>
+  </div>
+    </section>
+    </section>
+<div class="title_sect">
+  <h4>✧ Secundarias</h3>
+<button class="toggle-btn" data-target="misiones-completadas-Secundarias">Mostrar</button>
+    </div>
+<section class="collapsible" id="misiones-completadas-Secundarias">
+<section class="slide">
+      <div class="mision completada" data-tipo="secundaria" data-acto="1">
+    <h4>Carga Varada I</h4>
+    <p>
+      "Su tarea es fácil: No abran el recipiente, No pregunten por el recipiente, pero, sobre todo: <br>
+	   No lo escuchen"<br>
+	- S.P.B
+    </p>
+  </div>
+
+	</section>
+    </section>
+</section>
+<p>programado por Nico :p</p>
+<p class="hide" id="sigil-log">(No pude quitar ese sigilo a la derecha. Venia incluido en la tablilla)</p>
+<div id="hiddenLog" class="hidden-log">
+  <div id="log-content">
+    <button id="closeLog">Cerrar registro</button>
+  </div>
+</div>
+<div id="codex-sigil">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="none"/>
+
+    <polygon
+      points="50,70 20,20 80,20"
+      fill="none"
+      stroke="var(--aura-color)"
+      stroke-width="2"
+    />
+
+    <text x="10" y="20"
+          text-anchor="middle"
+          font-size="18"
+          fill="var(--aura-color)">ᚱ</text>
+
+    <text x="45" y="90"
+          font-size="18"
+          fill="var(--aura-color)">ᚺ</text>
+
+    <text x="95" y="20"
+          text-anchor="end"
+          font-size="18"
+          fill="var(--aura-color)">ᚨ</text>
+  </svg>
+</div>
+</body>
+<script src="script.js"></script>
+</html>
