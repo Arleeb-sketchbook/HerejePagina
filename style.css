@@ -288,8 +288,8 @@ input[type="number"] {
     transition: 0.2s;
 }
  button:hover{
-
-  box-shadow: 0 0 8px gray;
+	padding-left:20px;
+	padding-right:20px
       }
 .codex-tabs .tab {
   background: none;
