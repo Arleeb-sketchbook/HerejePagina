@@ -291,7 +291,7 @@ button{
 	transition:0.2s;
 }
  button:hover{
-	padding:20px;
+	padding:4px 16px;
       }
 .codex-tabs .tab {
   background: none;
