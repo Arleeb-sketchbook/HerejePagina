@@ -356,9 +356,7 @@ button{
 #userSelect option:hover,#userSelect option:checked {
   cursor:pointer;
 }
-.resync {
-  animation: resyncPulse 0.35s ease-out;
-}
+
 .mision {
   position: relative;
   padding-left: 1.2rem;
@@ -530,17 +528,7 @@ input[type="checkbox"]:focus-visible {
   0%, 100% { opacity: 0.5; }
   50% { opacity: 0.9; }
 }
-@keyframes resyncPulse {
-  0% {
-    filter: brightness(0.9) saturate(0.8);
-  }
-  40% {
-    filter: brightness(1.35) saturate(1.6);
-  }
-  100% {
-    filter: brightness(1) saturate(1);
-  }
-}
+
 @keyframes shake {
   0%   { transform: translate(0); }
   25%  { transform: translate(var(--shake-x, -2px), var(--shake-y, 1px)); }
