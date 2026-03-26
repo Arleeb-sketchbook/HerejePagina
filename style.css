@@ -119,7 +119,7 @@ background-position: center;
 background-attachment: fixed;
   color: #ddd;
   padding: 2rem;
-
+transition: 0.2s;
 }
 
 h2 {
