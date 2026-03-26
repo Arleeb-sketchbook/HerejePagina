@@ -287,9 +287,12 @@ input[type="number"] {
     flex-direction: row;
     transition: 0.2s;
 }
+button{
+	transition:0.2s;
+}
  button:hover{
-	padding-left:20px;
-	padding-right:20px
+	padding-left:30px;
+	padding-right:30px
       }
 .codex-tabs .tab {
   background: none;
