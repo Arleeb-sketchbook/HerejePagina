@@ -366,7 +366,7 @@ button{
 /* ETIQUETA */
 .mision::before {
   position: absolute;
-  top: 0.6rem;
+  bottom: 0.6rem;
   right: 0.8rem;
   font-size: 0.65rem;
   letter-spacing: 0.3em;
