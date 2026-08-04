@@ -18,7 +18,7 @@ const codexUsers = {
   zeraiya:   { color: '#3f8cff', glow: 'rgba(63,140,255,0.45)' ,name:'Zeraiya'},
   chance:    { color: '#DC143C', glow: 'rgba(220, 20, 60,0.45)',name:'Chance'},
 
-  codex:     { rgb: true, name: "CodexUser" }
+  codex:     { rgb: true, name: "???" }
 };
 let rgbInterval = null;
 let rgbHue = 0;
