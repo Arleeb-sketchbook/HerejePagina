@@ -709,20 +709,24 @@ if(userKey==="unselected" || userKey==="codex"){
 
 else{
 
-    await typeText(
-        result,
-        "Eco-Códice vinculado.",
-        70
-    );
+    result.innerHTML="";
 
-    await sleep(700);
+await typeText(
+    result,
+    "Eco-Códice vinculado.",
+    70
+);
+
+await sleep(700);
 
 
-    await typeText(
-        result,
-        `Bienvenido,${user.name}.`,
-        70
-    );
+await typeText(
+    result,
+    `Eco-Códice vinculado.<br><br>
+    Bienvenido,<br>
+    ${user.name}.`,
+    70
+);
 
 }
 
