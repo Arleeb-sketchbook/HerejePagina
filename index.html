@@ -57,17 +57,17 @@ background-attachment: fixed;
 
 
 
-.sigil-line{
+.sigil-line {
 
     fill:none;
 
     stroke:var(--aura);
 
-    stroke-width:3;
+    stroke-width:2;
 
-    stroke-dasharray:500;
+    stroke-dasharray:200;
 
-    stroke-dashoffset:500;
+    stroke-dashoffset:200;
 
     filter:
     drop-shadow(0 0 10px var(--aura));
@@ -244,7 +244,58 @@ background-attachment: fixed;
 
 }
 
+.sigil-rune {
 
+    fill:var(--aura);
+
+    opacity:0;
+
+    filter:
+    drop-shadow(0 0 10px var(--aura));
+
+    animation:
+    runeAppear 1s forwards;
+
+}
+
+
+.sigil-rune:nth-child(2){
+    animation-delay:1s;
+}
+
+
+.sigil-rune:nth-child(3){
+    animation-delay:1.3s;
+}
+
+
+.sigil-rune:nth-child(4){
+    animation-delay:1.6s;
+}
+
+
+@keyframes runeAppear {
+
+    from {
+
+        opacity:0;
+
+        transform:
+        scale(0.5);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:
+        scale(1);
+
+    }
+
+}
 </style>
 
 </head>
@@ -256,34 +307,41 @@ background-attachment: fixed;
 <div id="screen">
 
 
-<svg id="sigil" viewBox="0 0 200 200">
+<svg id="sigil" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+
+    <polygon
+      class="sigil-line"
+      points="50,70 20,20 80,20"
+    />
 
 
-<polygon
-class="sigil-line"
-points="
-100,10
-190,170
-10,170
-100,10"
-/>
+    <text 
+      class="sigil-rune"
+      x="10"
+      y="20"
+      text-anchor="middle"
+      font-size="18">
+      ᚱ
+    </text>
 
 
-<circle
-class="sigil-line"
-cx="100"
-cy="110"
-r="50"
-/>
+    <text 
+      class="sigil-rune"
+      x="45"
+      y="90"
+      font-size="18">
+      ᚺ
+    </text>
 
 
-<line
-class="sigil-line"
-x1="100"
-y1="60"
-x2="100"
-y2="160"
-/>
+    <text 
+      class="sigil-rune"
+      x="95"
+      y="20"
+      text-anchor="end"
+      font-size="18">
+      ᚨ
+    </text>
 
 
 </svg>
@@ -662,8 +720,7 @@ else{
 
     await typeText(
         result,
-        `Eco-Códice vinculado.<br><br>
-        Bienvenido,${user.name}.`,
+        `Bienvenido,${user.name}.`,
         70
     );
 
