@@ -1,408 +1,704 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <title>Eco-Códice</title>
 
 <style>
-* {
-    box-sizing: border-box;
+
+:root{
+    --aura:#888;
 }
 
-body {
-    margin: 0;
-    height: 100vh;
-    background: black;
-    color: white;
-    font-family: "Courier New", monospace;
-    overflow: hidden;
+*{
+    box-sizing:border-box;
 }
 
-#screen {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    opacity: 1;
-    transition: opacity 1s;
+body{
+
+    margin:0;
+    height:100vh;
+
+    background:black;
+    color:white;
+
+    font-family:"Courier New", monospace;
+
+    overflow:hidden;
+
 }
 
-#sigil {
-    width: 200px;
-    height: 200px;
-    margin-bottom: 20px;
+
+#screen{
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
 }
 
-.sigil-line {
-    fill: none;
-    stroke: var(--aura);
-    stroke-width: 3;
-    stroke-dasharray: 500;
-    stroke-dashoffset: 500;
-    filter: drop-shadow(0 0 10px var(--aura));
+
+
+#sigil{
+
+    width:220px;
+    height:220px;
+
 }
 
-.draw {
-    animation: draw 2s forwards;
+
+
+.sigil-line{
+
+    fill:none;
+
+    stroke:var(--aura);
+
+    stroke-width:3;
+
+    stroke-dasharray:500;
+
+    stroke-dashoffset:500;
+
+    filter:
+    drop-shadow(0 0 10px var(--aura));
+
 }
 
-@keyframes draw {
-    to {
-        stroke-dashoffset: 0;
+
+
+.draw{
+
+    animation:
+    draw 2s forwards;
+
+}
+
+
+
+@keyframes draw{
+
+    to{
+
+        stroke-dashoffset:0;
+
     }
+
 }
 
-#sync {
-    font-size: 20px;
-    opacity: 0;
-    animation: fadeIn 1s forwards;
+
+
+#sync{
+
+    text-align:center;
+
+    margin-top:20px;
+
+    font-size:22px;
+
+    opacity:0;
+
+    animation:
+    fade 1s forwards;
+
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
+
+
+@keyframes fade{
+
+    to{
+        opacity:1;
     }
+
 }
 
-#diagnostics {
-    width: 400px;
-    margin-top: 30px;
+
+
+#diagnostics{
+
+    width:420px;
+
+    margin-top:30px;
+
 }
 
-.line {
-    opacity: 0;
-    margin: 10px 0;
-    transition: .5s;
+
+
+.line{
+
+    opacity:0;
+
+    margin:10px 0;
+
+    transition:.5s;
+
 }
 
-.show {
-    opacity: 1;
+
+
+.show{
+
+    opacity:1;
+
 }
 
-.ok {
-    color: #6cff8d;
+
+
+.ok{
+
+    color:#6cff8d;
+
 }
 
-.warn {
-    color: orange;
+
+
+.warn{
+
+    color:#ffd84d;
+
 }
 
-.fail {
-    color: red;
+
+
+.fail{
+
+    color:#ff4444;
+
 }
 
-#story {
-    margin-top: 30px;
-    font-size: 22px;
-    min-height: 90px;
-    text-align: center;
+
+
+#story{
+
+    margin-top:30px;
+
+    min-height:90px;
+
+    text-align:center;
+
+    font-size:22px;
+
 }
 
-#result {
-    margin-top: 20px;
-    font-size: 26px;
-    text-align: center;
-    opacity: 0;
+
+
+#result{
+
+    margin-top:25px;
+
+    font-size:28px;
+
+    text-align:center;
+
+    opacity:0;
+
 }
 
-#flash {
-    position: fixed;
-    inset: 0;
-    background: var(--aura);
-    opacity: 0;
-    pointer-events: none;
+
+
+#flash{
+
+    position:fixed;
+
+    inset:0;
+
+    background:var(--aura);
+
+    opacity:0;
+
 }
 
-.flash {
-    animation: flash .8s;
+
+
+.flash{
+
+    animation:flash .8s;
+
 }
 
-@keyframes flash {
-    0% {
+
+
+@keyframes flash{
+
+    0%{
         opacity:0;
     }
-    30% {
+
+    30%{
         opacity:.8;
     }
-    100% {
+
+    100%{
         opacity:0;
     }
+
 }
 
-#interface {
-    display:none;
-    font-size:40px;
-}
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div id="screen">
 
-    <svg id="sigil" viewBox="0 0 200 200">
 
-        <polygon class="sigil-line"
-        points="
-        100,10
-        190,170
-        10,170
-        100,10"/>
-
-        <circle class="sigil-line"
-        cx="100"
-        cy="110"
-        r="50"/>
-
-        <line class="sigil-line"
-        x1="100"
-        y1="60"
-        x2="100"
-        y2="160"/>
-
-    </svg>
+<svg id="sigil" viewBox="0 0 200 200">
 
 
-    <div id="sync">
-        △<br>
-        Sincronizando...
-    </div>
+<polygon
+class="sigil-line"
+points="
+100,10
+190,170
+10,170
+100,10"
+/>
 
 
-    <div id="diagnostics">
+<circle
+class="sigil-line"
+cx="100"
+cy="110"
+r="50"
+/>
 
-    </div>
+
+<line
+class="sigil-line"
+x1="100"
+y1="60"
+x2="100"
+y2="160"
+/>
 
 
-    <div id="story"></div>
+</svg>
 
 
-    <div id="result"></div>
+
+<div id="sync">
+
+△<br>
+
+Sincronizando...
 
 </div>
+
+
+
+<div id="diagnostics"></div>
+
+
+<div id="story"></div>
+
+
+<div id="result"></div>
+
+
+
+</div>
+
 
 
 <div id="flash"></div>
 
-<div id="interface">
-    INTERFAZ DEL ECO-CÓDICE
-</div>
+
+
+<script src="codexUsers.js"></script>
+
 
 
 <script>
 
+
+const sleep =
+ms =>
+new Promise(r=>setTimeout(r,ms));
+
+
+
 //
-// Cambiar estos valores
+// Obtener usuario de maingpage
 //
-const carrier = "RGB";
-// Opciones:
-// "Akatsuki"
-// "Clementine"
-// "???"
-// "RGB"
 
-
-const auraColors = {
-    Akatsuki:"#ff3333",
-    Clementine:"#9d6cff",
-    RGB:"#00ffff",
-    "???":"#ffffff"
-};
-
-
-document.documentElement.style.setProperty(
-    "--aura",
-    auraColors[carrier] || "#ffffff"
+const saved =
+JSON.parse(
+localStorage.getItem("ecoCodexState")
 );
 
 
 
-const sleep = ms =>
-    new Promise(resolve=>setTimeout(resolve,ms));
+const userKey =
+saved?.user ?? "unselected";
+
+
+
+const user =
+codexUsers[userKey] ?? codexUsers.unselected;
+
+
+
+//
+// Aura
+//
+
+let rgbHue=0;
+
+
+
+function updateAura(){
+
+
+    if(user.rgb){
+
+
+        setInterval(()=>{
+
+
+            rgbHue =
+            (rgbHue+2)%360;
+
+
+            const color =
+            `hsl(${rgbHue},100%,60%)`;
+
+
+
+            document.documentElement
+            .style
+            .setProperty(
+                "--aura",
+                color
+            );
+
+
+
+        },30);
+
+
+
+    }
+
+    else{
+
+
+        document.documentElement
+        .style
+        .setProperty(
+            "--aura",
+            user.color
+        );
+
+
+    }
+
+
+}
+
+
+
+updateAura();
+
 
 
 
 function typeText(element,text,speed=50){
 
-    return new Promise(resolve=>{
 
-        let i=0;
+return new Promise(resolve=>{
 
-        element.innerHTML="";
 
-        let timer=setInterval(()=>{
+let i=0;
 
-            element.innerHTML += text[i];
 
-            i++;
+element.innerHTML="";
 
-            if(i>=text.length){
-                clearInterval(timer);
-                resolve();
-            }
 
-        },speed);
 
-    });
+let timer=setInterval(()=>{
+
+
+element.innerHTML+=text[i];
+
+
+i++;
+
+
+
+if(i>=text.length){
+
+clearInterval(timer);
+
+resolve();
 
 }
+
+
+},speed);
+
+
+
+});
+
+
+}
+
+
 
 
 
 async function start(){
 
 
-    // Oscuridad total
-    await sleep(500);
 
+await sleep(500);
 
 
-    // Dibujar sigilo
 
-    document.querySelectorAll(".sigil-line")
-    .forEach(x=>x.classList.add("draw"));
 
-    await sleep(1000);
+// Sigilo
 
+document
+.querySelectorAll(".sigil-line")
+.forEach(
+x=>x.classList.add("draw")
+);
 
 
-    // Diagnósticos
 
-    const diagnostics=[
+await sleep(1200);
 
-        ["[✓] Integridad del Eco-Códice","ok"],
-        ["[✓] Marca encontrada","ok"],
-        ["[✓] Canal del Reverso abierto","ok"],
-        ["[...] Analizando memoria residual","warn"]
 
-    ];
 
 
-    if(carrier==="???"){
+// Diagnóstico
 
-        diagnostics.push(
-            ["[✗] Portador desconocido","fail"]
-        );
 
-    }
-    else if(carrier==="RGB"){
+let diagnostics=[
 
-        diagnostics.push(
-            ["[!] Anomalía detectada","warn"]
-        );
 
-    }
-    else{
+[
+"[✓] Integridad del Eco-Códice",
+"ok"
+],
 
-        diagnostics.push(
-            ["[✓] Identidad confirmada","ok"]
-        );
 
-    }
+[
+"[✓] Marca encontrada",
+"ok"
+],
 
 
+[
+"[✓] Canal del Reverso abierto",
+"ok"
+],
 
-    let box=document.getElementById("diagnostics");
 
+[
+"[...] Analizando memoria residual",
+"warn"
+]
 
-    for(let d of diagnostics){
+];
 
-        let div=document.createElement("div");
 
-        div.className="line "+d[1];
 
-        div.innerHTML=d[0];
 
-        box.appendChild(div);
+if(userKey==="codex"){
 
-        await sleep(600);
 
-        div.classList.add("show");
+diagnostics.push(
+[
+"[!] Anomalía detectada",
+"warn"
+]
+);
 
-        await sleep(300);
 
-    }
+}
 
+else if(userKey==="unselected"){
 
 
-    await sleep(500);
+diagnostics.push(
+[
+"[✗] Portador desconocido",
+"fail"
+]
+);
 
 
+}
 
-    // Narrativa
+else{
 
-    let story=document.getElementById("story");
 
+diagnostics.push(
+[
+"[✓] Identidad confirmada",
+"ok"
+]
+);
 
-    await typeText(
-        story,
-        "La Marca recuerda."
-    );
 
-    await sleep(500);
+}
 
 
-    await typeText(
-        story,
-        "El Eco escucha."
-    );
 
-    await sleep(500);
 
+const box =
+document.getElementById("diagnostics");
 
-    await typeText(
-        story,
-        "La Verdad espera."
-    );
 
 
+for(let d of diagnostics){
 
-    await sleep(1000);
 
+let div =
+document.createElement("div");
 
 
-    // Resultado final
+div.className=
+"line "+d[1];
 
-    let result=document.getElementById("result");
 
+div.textContent=d[0];
 
-    if(carrier==="???"){
 
-        result.innerHTML=
-        "Portador desconocido.";
+box.appendChild(div);
 
-    }
-    else{
 
-        result.innerHTML=
-        `Eco-Códice vinculado.<br><br>
-        Bienvenido,<br>
-        ${carrier}.`;
 
-    }
+await sleep(500);
 
 
-    result.style.opacity=1;
+div.classList.add("show");
 
 
-    await sleep(1500);
 
+await sleep(300);
 
 
-    // Flash
+}
 
-    let flash=document.getElementById("flash");
 
-    flash.classList.add("flash");
 
 
 
-    await sleep(800);
+// Narrativa
 
 
+const story =
+document.getElementById("story");
 
-window.location.href = "mainpage.html";
+
+
+await typeText(
+story,
+"La Marca recuerda."
+);
+
+
+
+await sleep(600);
+
+
+
+await typeText(
+story,
+"El Eco escucha."
+);
+
+
+
+await sleep(600);
+
+
+
+await typeText(
+story,
+"La Verdad espera."
+);
+
+
+
+await sleep(1000);
+
+
+
+
+// Vinculación
+
+
+const result =
+document.getElementById("result");
+
+
+
+if(userKey==="unselected" ||
+userKey==="codex"){
+
+
+result.innerHTML=
+"Portador desconocido.";
+
+
+}
+
+else{
+
+
+result.innerHTML=
+`
+Eco-Códice vinculado.<br><br>
+
+Bienvenido,<br>
+
+${user.name}.
+
+`;
+
+}
+
+
+
+result.style.opacity=1;
+
+
+
+await sleep(1500);
+
+
+
+
+// Flash
+
+
+document
+.getElementById("flash")
+.classList.add("flash");
+
+
+
+// Entrada
+
+
+window.location.href=
+"mainpage.html";
+
 
 
 }
@@ -414,5 +710,7 @@ start();
 
 </script>
 
+
 </body>
+
 </html>
