@@ -386,7 +386,7 @@ function getBearerName() {
 function generateLog() {
   const name = getBearerName();
 
-  if (bearerInput.value === "unselected") {
+  if (bearerInput.value === "unselected" || bearerInput.value === "codex") {
     logText.innerHTML = `<h3>Registro Inaccesible</h3>
     <p class="warning">Quien eres?</p>`;
   } else {
