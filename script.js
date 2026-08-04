@@ -16,8 +16,12 @@ const codexUsers = {
   clementine:{ color: '#6fdcff', glow: 'rgba(111,220,255,0.45)',name:'Clementine'},
   quiron:    { color: '#ff8ad8', glow: 'rgba(255,138,216,0.45)',name:'Quiron'},
   zeraiya:   { color: '#3f8cff', glow: 'rgba(63,140,255,0.45)' ,name:'Zeraiya'},
-  chance:    { color: '#DC143C', glow: 'rgba(220, 20, 60,0.45)',name:'Chance'}
+  chance:    { color: '#DC143C', glow: 'rgba(220, 20, 60,0.45)',name:'Chance'},
+
+  codex:     { rgb: true, name: "CodexUser" }
 };
+let rgbInterval = null;
+let rgbHue = 0;
 const select = document.getElementById('userSelect');
 
 function saveState() {
@@ -74,9 +78,32 @@ if (state.activeTab) {
 function applyCodexUser(userKey) {
   const user = codexUsers[userKey];
   if (!user) return;
-  	document.documentElement.style.setProperty('--aura-color', user.color);
-  	document.documentElement.style.setProperty('--aura-glow', user.glow);
-	document.title = "ECO-CODICE — " + user.name;
+
+  clearInterval(rgbInterval);
+  rgbInterval = null;
+
+  if (user.rgb) {
+    rgbInterval = setInterval(() => {
+      rgbHue = (rgbHue + 2) % 360;
+
+      const color = `hsl(${rgbHue}, 100%, 60%)`;
+      const glow = `hsla(${rgbHue}, 100%, 60%, 0.45)`;
+
+      document.documentElement.style.setProperty('--aura-color', color);
+      document.documentElement.style.setProperty('--aura-glow', glow);
+
+      updateFaviconFromAura();
+      updateCursorFromAura();
+    }, 30);
+  } else {
+    document.documentElement.style.setProperty('--aura-color', user.color);
+    document.documentElement.style.setProperty('--aura-glow', user.glow);
+
+    updateFaviconFromAura();
+    updateCursorFromAura();
+  }
+
+  document.title = "ECO-CODICE — " + user.name;
 }
 
 function generateCursorSVG(strokeColor, glowColor = null) {
