@@ -87,7 +87,7 @@ function applyCodexUser(userKey) {
       rgbHue = (rgbHue + 2) % 360;
 
       const color = `hsl(${rgbHue}, 100%, 60%)`;
-      const glow = `hsla(${rgbHue}, 100%, 60%, 0.45)`;
+      const glow = `hsla(${rgbHue}, 100%, 60%, 0.15)`;
 
       document.documentElement.style.setProperty('--aura-color', color);
       document.documentElement.style.setProperty('--aura-glow', glow);
