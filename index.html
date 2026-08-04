@@ -417,42 +417,31 @@ updateAura();
 
 function typeText(element,text,speed=50){
 
+    return new Promise(resolve=>{
 
-return new Promise(resolve=>{
+        let i=0;
 
-
-let i=0;
-
-
-element.innerHTML="";
+        element.innerHTML="";
 
 
+        let timer=setInterval(()=>{
 
-let timer=setInterval(()=>{
+            element.innerHTML=text.substring(0,i);
 
-
-element.innerHTML+=text[i];
-
-
-i++;
+            i++;
 
 
+            if(i>text.length){
 
-if(i>=text.length){
+                clearInterval(timer);
+                resolve();
 
-clearInterval(timer);
+            }
 
-resolve();
-
-}
-
-
-},speed);
+        },speed);
 
 
-
-});
-
+    });
 
 }
 
@@ -643,34 +632,41 @@ await sleep(1000);
 
 // Vinculación
 
-
 const result =
 document.getElementById("result");
 
 
-
-if(userKey==="unselected" ||
-userKey==="codex"){
+result.style.opacity = 1;
 
 
-result.innerHTML=
-"Portador desconocido.";
+if(userKey==="unselected" || userKey==="codex"){
 
+    await typeText(
+        result,
+        "Portador desconocido.",
+        70
+    );
 
 }
 
 else{
 
+    await typeText(
+        result,
+        "Eco-Códice vinculado.",
+        70
+    );
 
-result.innerHTML=
-`
-Eco-Códice vinculado.<br><br>
+    await sleep(700);
 
-Bienvenido,<br>
 
-${user.name}.
-
-`;
+    await typeText(
+        result,
+        `Eco-Códice vinculado.<br><br>
+        Bienvenido,<br>
+        ${user.name}.`,
+        70
+    );
 
 }
 
