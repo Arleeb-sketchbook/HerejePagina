@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-    <script src="codexUsers.js"></script>
-<head>
 
+<head>
+    <script src="codexUsers.js"></script>
 <meta charset="UTF-8">
 <title>Eco-Códice</title>
 <style>
@@ -98,7 +98,6 @@ background-attachment: fixed;
 
 
 #sync{
-
     text-align:center;
 
     margin-top:20px;
@@ -107,8 +106,7 @@ background-attachment: fixed;
 
     opacity:0;
 
-    animation:
-    fade 1s forwards;
+    transition:1s;
 
 }
 
@@ -293,6 +291,29 @@ background-attachment: fixed;
         transform:
         scale(1);
 
+    }
+
+}
+
+.draw{
+    animation:
+    draw 2s forwards,
+    sigilShake .08s infinite;
+}
+
+
+@keyframes sigilShake{
+
+    0%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(.5px,.5px);
+    }
+
+    100%{
+        transform:translate(0,0);
     }
 
 }
@@ -484,7 +505,7 @@ function typeText(element,text,speed=50){
 
         let timer=setInterval(()=>{
 
-            element.innerHTML=text.substring(0,i);
+            element.innerHTML=text.substring(0,i).replaceAll("\n","<br>");
 
             i++;
 
@@ -528,7 +549,9 @@ x=>x.classList.add("draw")
 
 await sleep(1200);
 
+document.getElementById("sync").style.opacity = 1;
 
+await sleep(800);
 
 
 // Diagnóstico
@@ -713,9 +736,11 @@ else{
 
 await typeText(
     result,
-    `Eco-Códice vinculado.<br><br>
-    Bienvenido,<br>
-    ${user.name}.`,
+    `Eco-Códice vinculado.
+
+Bienvenido,
+
+${user.name}.`,
     70
 );
 

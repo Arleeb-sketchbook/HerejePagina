@@ -47,8 +47,10 @@ const codexUsers = {
     name:'Chance'
   },
 
-  codex:{
+ codex:{
     rgb:true,
+    color:"#ffffff",
+    glow:"rgba(255,255,255,0.4)",
     name:"???"
-  }
+}
 };
