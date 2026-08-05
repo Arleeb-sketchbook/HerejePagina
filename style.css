@@ -451,6 +451,53 @@ button{
   color: color-mix(in srgb, var(--aura-color), #777);
   letter-spacing: 0.4em;
 }    
+/* BLOQUEADA — el camino está sellado */
+.mision[data-tipo="bloqueada"] {
+  border-left: 4px solid #555;
+  border-right: 1px solid #333;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.025),
+      rgba(255,255,255,0.025) 8px,
+      rgba(0,0,0,0.15) 8px,
+      rgba(0,0,0,0.15) 16px
+    ),
+    rgba(0,0,0,0.5);
+
+  filter: grayscale(0.8);
+  opacity: 0.75;
+}
+
+.mision[data-tipo="bloqueada"]::before {
+  content: "🔒 BLOQUEADA";
+  color: #777;
+}
+
+.mision[data-tipo="bloqueada"]::after {
+  content: "ACCESO RESTRINGIDO";
+  color: #666;
+  letter-spacing: 0.4em;
+}
+
+
+/* Caja de requisitos */
+.requisito {
+  margin-top: 1rem;
+  padding: 0.7rem;
+  border: 1px dashed #555;
+  background: rgba(0,0,0,0.35);
+
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.mision[data-tipo="bloqueada"] .requisito::before {
+  content: "⚠ ";
+  color: #777;
+}
 input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
