@@ -54,25 +54,3 @@ const codexUsers = {
     name:"???"
 }
 };
-const saved = JSON.parse(localStorage.getItem("ecoCodexState"));
-const userKey = saved?.user ?? "unselected";
-const user = codexUsers[userKey];
-
-document.documentElement.style.setProperty(
-    "--aura",
-    user.rgb ? "#ffffff" : user.color
-);
-
-const color = user.rgb ? "#ffffff" : user.color;
-
-const svg = `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-<polygon points="50,88 12,18 88,18"
-fill="none"
-stroke="${color}"
-stroke-width="4"/>
-</svg>
-`;
-
-document.getElementById("favicon").href =
-    "data:image/svg+xml," + encodeURIComponent(svg);

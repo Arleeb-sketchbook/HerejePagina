@@ -409,7 +409,22 @@ saved?.user ?? "unselected";
 const user =
 codexUsers[userKey] ?? codexUsers.unselected;
 
+function updateFavicon(color){
 
+    const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <polygon
+        points="50,88 12,18 88,18"
+        fill="none"
+        stroke="${color}"
+        stroke-width="4"
+    />
+</svg>`;
+
+    document.getElementById("favicon").href =
+        "data:image/svg+xml," + encodeURIComponent(svg);
+
+}
 
 //
 // Aura
@@ -438,11 +453,13 @@ function updateAura(){
 
 
             document.documentElement
-            .style
-            .setProperty(
-                "--aura",
-                color
-            );
+.style
+.setProperty(
+    "--aura",
+    color
+);
+
+updateFavicon(color);
 
 
 
@@ -456,11 +473,13 @@ function updateAura(){
 
 
         document.documentElement
-        .style
-        .setProperty(
-            "--aura",
-            user.color
-        );
+.style
+.setProperty(
+    "--aura",
+    user.color
+);
+
+updateFavicon(user.color);
 
 
     }
