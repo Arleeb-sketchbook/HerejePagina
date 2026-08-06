@@ -43,18 +43,26 @@
 </header>
 <div class="codex-header">
   <label>Eco-Códice vinculado a:</label>
-  <select id="userSelect">
-    <option style="color:#1a1a1a;" value="codex">RGB</option>
-    <option style="color:#888	 ;" value="unselected">???</option>
-    <option style="color:#e53935 ;" value="akatsuki">Akatsuki</option>
-    <option style="color:#9c6cff ;" value="elios">Elios</option>
-    <option style="color:#ffd84d ;" value="jojo">JoJo</option>
-    <option style="color:#6fdcff ;" value="clementine">Clementine</option>
-    <option style="color:#ff8ad8 ;" value="quiron">Quirón</option>
-    <option style="color:#3f8cff ;" value="zeraiya">Zeraiya</option>
-    <option style="color:crimson ;"value="chance">Chance</option>
+<div class="codex-select" id="userSelect">
+    <button class="codex-select-trigger">
+        <span class="selected-text">???</span>
+        <span class="arrow">▼</span>
+    </button>
 
-  </select>
+    <div class="codex-select-menu">
+        <div class="option" data-value="codex" style="--color:#1a1a1a">RGB</div>
+        <div class="option" data-value="unselected" style="--color:#888">???</div>
+        <div class="option" data-value="akatsuki" style="--color:#e53935">Akatsuki</div>
+        <div class="option" data-value="elios" style="--color:#9c6cff">Elios</div>
+        <div class="option" data-value="jojo" style="--color:#ffd84d">JoJo</div>
+        <div class="option" data-value="clementine" style="--color:#6fdcff">Clementine</div>
+        <div class="option" data-value="quiron" style="--color:#ff8ad8">Quirón</div>
+        <div class="option" data-value="zeraiya" style="--color:#3f8cff">Zeraiya</div>
+        <div class="option" data-value="chance" style="--color:crimson">Chance</div>
+    </div>
+
+    <input type="hidden" id="selectedUser" value="codex">
+</div>
 </div>
     <br>
 <section id="allthecodex">

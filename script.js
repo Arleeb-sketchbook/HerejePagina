@@ -23,7 +23,41 @@ const codexUsers = {
 let rgbInterval = null;
 let rgbHue = 0;
 const select = document.getElementById('userSelect');
+const customSelect = document.getElementById("selectedUser");
+const trigger = customSelect.querySelector(".codex-select-trigger");
+const text = customSelect.querySelector(".selected-text");
+const hidden = document.getElementById("selectedUser");
 
+trigger.onclick = () =>
+    customSelect.classList.toggle("open");
+
+document.querySelectorAll(".option").forEach(option=>{
+
+    option.onclick=()=>{
+
+        const value = option.dataset.value;
+
+        hidden.value = value;
+
+        text.textContent = option.textContent;
+
+        customSelect.classList.remove("open");
+
+        applyCodexUser(value);
+        updateFaviconFromAura();
+        updateCursorFromAura();
+        saveState();
+
+    };
+
+});
+
+document.addEventListener("click",e=>{
+
+    if(!customSelect.contains(e.target))
+        customSelect.classList.remove("open");
+
+});
 function saveState() {
   const state = {
     user: select.value,
@@ -376,7 +410,7 @@ checkboxes.forEach(cb => cb.addEventListener('change', saveState));
 xInputs.forEach(x => x.addEventListener('input', saveState));
 select.addEventListener('change', saveState);
 maxInput.addEventListener('input', saveState);
-const bearerInput = document.getElementById("userSelect");
+const bearerInput = document.getElementById("selectedUser");
 const logText = document.getElementById("log-content");
 function getBearerName() {
   const value = bearerInput.value.trim();

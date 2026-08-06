@@ -331,6 +331,71 @@ button{
   opacity: 0.6;
   text-decoration: line-through;
 }
+.codex-select{
+    position:relative;
+    display:inline-block;
+    font-size:20px;
+}
+
+.codex-select-trigger{
+    all:unset;
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+
+    color:var(--aura-color);
+
+    text-shadow:
+        1px 1px 0 #1a1a1a,
+       -1px -1px 0 #3a3a3a,
+        0 0 6px var(--aura-glow),
+        0 0 14px var(--aura-glow),
+        0 0 26px var(--aura-glow);
+
+    padding:.3rem;
+}
+
+.codex-select-menu{
+    position:absolute;
+    top:100%;
+    left:0;
+
+    min-width:180px;
+
+    background:rgba(10,10,10,.96);
+
+    border:1px solid #444;
+
+    display:none;
+
+    z-index:100;
+}
+
+.codex-select.open .codex-select-menu{
+    display:block;
+}
+
+.option{
+
+    padding:.5rem .8rem;
+
+    color:var(--color);
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.option:hover{
+
+    background:rgba(255,255,255,.08);
+
+    text-shadow:
+        0 0 4px currentColor,
+        0 0 10px currentColor;
+}
       #userSelect{
           
     padding: 0.3rem;
