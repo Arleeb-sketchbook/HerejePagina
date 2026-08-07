@@ -1,6 +1,8 @@
 :root {
   --aura-color: #888;
   --aura-glow: rgba(120,120,120,0.25);
+  --menu-bg:#0a0a0a;
+}
 }
  @font-face {
   font-family: 'Runelike';
@@ -364,13 +366,13 @@ button{
 
     min-width:180px;
 
-    background:rgba(10,10,10,.96);
+    background:--menu-bg;
 
     border:1px solid #444;
 
     display:none;
 
-    z-index:100;
+    z-index:1001;
 }
 
 .codex-select.open .codex-select-menu{
@@ -378,42 +380,23 @@ button{
 }
 
 .option{
-
-    padding:.5rem .8rem;
-
     color:var(--color);
+    background:--menu-bg;
 
-    cursor:pointer;
-
-    transition:.2s;
+    transition:
+        background .2s,
+        color .2s,
+        text-shadow .2s;
 }
 
 .option:hover{
 
-    background:rgba(255,255,255,.08);
+    background:var(--color);
 
-    text-shadow:
-        0 0 4px currentColor,
-        0 0 10px currentColor;
+    color:var(--menu-bg); /* mismo color que el menú */
+
+    text-shadow:none;
 }
-      #userSelect{
-          
-    padding: 0.3rem;
-    border-radius: 4px;
-    border: none;
-    background: none;
-  color: var(--aura-color);
-
-  text-shadow:
-    1px 1px 0 #1a1a1a,
-   -1px -1px 0 #3a3a3a,
-
-    0 0 6px var(--aura-glow),
-    0 0 14px var(--aura-glow),
-    0 0 26px var(--aura-glow);
-    outline: none;
-    font-size:20px;
-      }
 #userSelect option {
   background: rgba(0, 0, 0, 0.9); /* fondo oscuro para desplegable */
   padding: 5px 10px;
