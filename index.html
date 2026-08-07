@@ -720,34 +720,6 @@ document.getElementById("result");
 result.style.opacity = 1;
 
 
-if(userKey==="unselected" || userKey==="codex"){
-
-    await typeText(
-        result,
-        "Portador desconocido.",
-        70
-    );
-
-}
-
-else{
-
-    result.innerHTML="";
-
-await typeText(
-    result,
-    `Eco-Códice vinculado.
-
-Bienvenido, ${user.name}.`,
-    70
-);
-}
-
-
-
-result.style.opacity=1;
-
-
 
 await sleep(1500);
 
