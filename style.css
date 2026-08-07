@@ -293,8 +293,8 @@ button{
 	transition:0.2s;
 }
  button:hover{
-	padding:4px 16px;
-      }
+    transform:scale(1.03);
+  }
 .codex-tabs .tab {
   background: none;
   border: 1px solid #555;
@@ -366,13 +366,15 @@ button{
 
     min-width:180px;
 
-    background:--menu-bg;
+    background:var(--menu-bg);
 
     border:1px solid #444;
 
     display:none;
 
     z-index:1001;
+
+    overflow:hidden;
 }
 
 .codex-select.open .codex-select-menu{
@@ -380,21 +382,26 @@ button{
 }
 
 .option{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:.55rem .8rem;
+    text-align:center;
+
     color:var(--color);
-    background:--menu-bg;
+    background:var(--menu-bg);
+
+    cursor:pointer;
 
     transition:
         background .2s,
-        color .2s,
-        text-shadow .2s;
+        color .2s;
 }
 
 .option:hover{
-
     background:var(--color);
-
-    color:var(--menu-bg); /* mismo color que el menú */
-
+    color:var(--menu-bg);
     text-shadow:none;
 }
 #userSelect option {
