@@ -22,15 +22,18 @@ const codexUsers = {
 };
 let rgbInterval = null;
 let rgbHue = 0;
-const select = document.getElementById('userSelect');
-const customSelect = document.getElementById("selectedUser");
+const select = document.getElementById("selectedUser");
+const customSelect = document.getElementById("userSelect"); // el DIV
+
 const trigger = customSelect.querySelector(".codex-select-trigger");
 const text = customSelect.querySelector(".selected-text");
-const hidden = document.getElementById("selectedUser");
 
-trigger.onclick = () =>
+const hidden = document.getElementById("selectedUser"); // el INPUT oculto
+
+trigger.addEventListener("click", e => {
+    e.stopPropagation();
     customSelect.classList.toggle("open");
-
+});
 document.querySelectorAll(".option").forEach(option=>{
 
     option.onclick=()=>{
